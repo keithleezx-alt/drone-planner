@@ -7,11 +7,11 @@ it inside a virtual environment — no GUI.
 `week-1-setup`
 
 ## Tasks
-- [ ] Get to a working Ubuntu terminal (native, dual-boot, or VM).
-- [ ] Practice: `cd`, `ls`, `pwd`, `mkdir`, `mv`, `cp`, `rm`.
-- [ ] Create a virtual environment and activate it (`python3 -m venv .venv`).
-- [ ] `pip install -r requirements.txt`.
-- [ ] Edit `src/hello.py` to print your name and today's date; run it from the CLI.
+- [v] Get to a working Ubuntu terminal (native, dual-boot, or VM).
+- [v] Practice: `cd`, `ls`, `pwd`, `mkdir`, `mv`, `cp`, `rm`.
+- [v] Create a virtual environment and activate it (`python3 -m venv .venv`).
+- [v] `pip install -r requirements.txt`.
+- [v] Edit `src/hello.py` to print your name and today's date; run it from the CLI.
 
 ## Deliverable / PR
 Open a PR titled **"Week 1: setup"** with your `hello.py` change and a screenshot
