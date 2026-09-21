@@ -8,10 +8,11 @@ TODO (Week 1): make it print your name and today's date.
 Hint: `from datetime import date` and `date.today()`.
 """
 
-
+from datetime import date
 def main():
     # TODO: replace this line
-    print("hello, world")
+    print(date.today())
+    print("Brian")
 
 
 if __name__ == "__main__":
