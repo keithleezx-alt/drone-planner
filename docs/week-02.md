@@ -7,8 +7,8 @@ a branch.
 `week-2-git`
 
 ## Tasks
-- [v] Clone this repo; configure your git name/email.
-- [v] Create a branch, make a small document change, commit with a meaningful message.
+- [x] Clone this repo; configure your git name/email.
+- [x] Create a branch, make a small document change, commit with a meaningful message.
 - [ ] Push and open a Pull Request; fill in the template.
 - [ ] Merge your own PR (with mentor review).
 - [ ] Deliberately create and resolve a merge conflict once.
