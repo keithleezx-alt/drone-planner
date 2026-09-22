@@ -1,6 +1,6 @@
 # Drone Planner Sprint — Intern Workspace
 
-jingyi has been here :)
+jingyi has been here :)-person b
 Welcome. Over 7 weeks you'll build a 2D path planner from scratch — command line
 and git first, then BFS, Dijkstra, A\*, and RRT. This repo is **your workspace**:
 it ships with folders, stub files, and tests. Your job is to fill in the stubs
