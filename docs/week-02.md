@@ -10,7 +10,7 @@ a branch.
 - [x] Clone this repo; configure your git name/email.
 - [x] Create a branch, make a very small document change, commit with a meaningful message.
 - [x] Push and open a Pull Request; fill in the template.
-- [ ] Merge your own PR (with mentor review).
+- [x] Merge your own PR (with mentor review).
 - [x] Deliberately create and resolve a merge conflict once.
 
 ## Deliverable / PR
