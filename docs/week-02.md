@@ -9,9 +9,9 @@ a branch.
 ## Tasks
 - [x] Clone this repo; configure your git name/email.
 - [x] Create a branch, make a very small document change, commit with a meaningful message.
-- [ ] Push and open a Pull Request; fill in the template.
+- [x] Push and open a Pull Request; fill in the template.
 - [ ] Merge your own PR (with mentor review).
-- [ ] Deliberately create and resolve a merge conflict once.
+- [x] Deliberately create and resolve a merge conflict once.
 
 ## Deliverable / PR
 The merged PR itself is the deliverable. Bonus: add yourself to a `CONTRIBUTORS.md`.
