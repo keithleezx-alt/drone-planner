@@ -50,6 +50,15 @@ def is_free(grid: np.ndarray, cell: tuple[int, int]) -> bool:
 def neighbors(
     grid: np.ndarray, cell: tuple[int, int], connectivity: int = 4
 ) -> list[tuple[int, int]]:
+    deltaRow = [1,0,-1,0,1,1,-1,-1]
+    deltaCol = [0,1,0,-1,-1,1,-1,1]
+    cellX, cellY = cell
+    neighborCells = []
+    for direction in range(connectivity):
+        neighborX, neighborY = cellX + deltaRow[direction], cellY + deltaCol[direction]
+        if in_bounds(grid, (neighborX, neighborY)) and is_free(grid, (neighborX, neighborY)):
+            neighborCells.append((neighborX, neighborY))
+    return neighborCells
     """Return valid neighbor cells of `cell`.
 
     TODO (Week 3):
