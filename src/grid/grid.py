@@ -68,7 +68,6 @@ def neighbors(
     Hint: build the list of candidate offsets, add them to (r, c),
     then filter with is_free().
     """
-    raise NotImplementedError("Week 3: implement neighbors()")
 
 
 def show_grid(grid: np.ndarray, path=None, start=None, goal=None, title="grid"):
@@ -92,3 +91,10 @@ def show_grid(grid: np.ndarray, path=None, start=None, goal=None, title="grid"):
     ax.set_xticks([])
     ax.set_yticks([])
     plt.show()
+
+def main():
+    grid = load_map("maps/simple.txt")
+    show_grid(grid)
+
+if __name__ == "__main__":
+    main()
