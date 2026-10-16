@@ -50,16 +50,20 @@ def is_free(grid: np.ndarray, cell: tuple[int, int]) -> bool:
 def neighbors(
     grid: np.ndarray, cell: tuple[int, int], connectivity: int = 4
 ) -> list[tuple[int, int]]:
-    """Return valid neighbor cells of `cell`.
+    r,c=cell
+    offset=[(-1,0),(1,0),(0,-1),(0,1)]
+    if (connectivity==8):
+        offset.extend([(-1,-1),(-1,1),(1,-1),(1,1)])
 
-    TODO (Week 3):
-      - connectivity == 4: up, down, left, right
-      - connectivity == 8: also the four diagonals
-      - only return cells that are in bounds AND free
-    Hint: build the list of candidate offsets, add them to (r, c),
-    then filter with is_free().
-    """
-    raise NotImplementedError("Week 3: implement neighbors()")
+    validneighbour=[]
+    for dr,dc in offset:
+        nr=r+dr
+        nc=c+dc
+        if in_bounds(grid,(nr,nc)):
+            if is_free(grid,(nr,nc)):
+                newcell=nr,nc
+                validneighbour.append(newcell)
+    return validneighbour
 
 
 def show_grid(grid: np.ndarray, path=None, start=None, goal=None, title="grid"):
