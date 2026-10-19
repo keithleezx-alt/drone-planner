@@ -11,6 +11,14 @@ from collections import deque
 
 from src.grid.grid import neighbors
 
+def reconstruct_path(came_from, goal):
+    if (goal not in came_from):
+        return None
+    path = []
+    while goal != None:
+        path.append(goal)
+        goal = came_from[goal]
+    return path[::-1]
 
 def bfs(grid, start, goal, connectivity=4):
     """Find a shortest path from start to goal using BFS.
@@ -25,4 +33,14 @@ def bfs(grid, start, goal, connectivity=4):
     Hint: write a small reconstruct_path(came_from, goal) helper — you'll reuse
     it in dijkstra and astar.
     """
-    raise NotImplementedError("Week 4: implement bfs()")
+    frontier = deque([start])
+    came_from = dict()
+    came_from[start] = None
+    while (len(frontier) > 0) and (goal not in came_from):
+        currentCell = frontier.popleft()
+        for neighborCell in neighbors(grid, currentCell, connectivity):
+            if (neighborCell in came_from):
+                continue
+            came_from[neighborCell] = currentCell
+            frontier.append(neighborCell)
+    return reconstruct_path(came_from, goal)
