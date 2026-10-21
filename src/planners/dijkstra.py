@@ -9,15 +9,7 @@ from __future__ import annotations
 import heapq
 
 from src.grid.grid import neighbors
-
-def reconstruct_path(came_from, goal):
-    if (goal not in came_from):
-        return None
-    path = []
-    while goal != None:
-        path.append(goal)
-        goal = came_from[goal]
-    return path[::-1]
+from src.planners.bfs import reconstruct_path
 
 def cost(grid, a, b):
     """Cost to move from cell a to neighbor b.
@@ -28,7 +20,6 @@ def cost(grid, a, b):
     if a[0] != b[0] and a[1] != b[1]:
         return (2**0.5)
     return 1.0
-
 
 def dijkstra(grid, start, goal, connectivity=4):
     """Find a lowest-cost path from start to goal.
