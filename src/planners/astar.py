@@ -23,7 +23,11 @@ def heuristic(a, b, connectivity=4):
       - 8-connected: octile or Euclidean distance
     Keep it admissible (never larger than the true remaining cost).
     """
-    raise NotImplementedError("Week 5: implement heuristic()")
+    deltaRow = abs(a[0] - b[0])
+    deltaCol = abs(a[1] - b[1])
+    if connectivity == 4:
+        deltaRow + deltaCol
+    return min(deltaRow, deltaCol) * (2 ** 0.5) + abs(deltaRow - deltaCol)
 
 
 def astar(grid, start, goal, connectivity=4):
