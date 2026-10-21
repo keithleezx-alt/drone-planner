@@ -15,7 +15,6 @@ from src.grid.grid import neighbors
 from src.planners.dijkstra import cost
 from src.planners.dijkstra import reconstruct_path
 
-
 def heuristic(a, b, connectivity=4):
     """Estimate the distance from a to b.
 
@@ -29,7 +28,6 @@ def heuristic(a, b, connectivity=4):
     if connectivity == 4:
         deltaRow + deltaCol
     return min(deltaRow, deltaCol) * (2 ** 0.5) + abs(deltaRow - deltaCol)
-
 
 def astar(grid, start, goal, connectivity=4):
     """Find an optimal path using A*.
