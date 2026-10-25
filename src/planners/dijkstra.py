@@ -19,6 +19,15 @@ def cost(grid, a, b):
     """
     return 1.0
 
+def reconstruct_path(came_from, goal):
+  path=[]
+  current=goal
+  while current is not None:
+    path.append(current)
+    current=came_from[current]
+
+  path.reverse()
+  return path
 
 def dijkstra(grid, start, goal, connectivity=4):
     """Find a lowest-cost path from start to goal.
@@ -30,4 +39,24 @@ def dijkstra(grid, start, goal, connectivity=4):
       - cost_so_far dict, came_from dict
       - relax neighbors: if new cost is cheaper, update and push
     """
-    raise NotImplementedError("Week 4: implement dijkstra()")
+  frontier=[]
+  heapq.heappush(frontier,(0,start))
+  came_from={start: None}
+  cost_so_far={start:0}
+  while frontier:
+    current_cost, current=heapq.heappop(frontier)
+    if current_cost>cost_so_far[current]:
+      continue
+
+    if current==goal:
+      return reconstruct_path(came_from, goal)
+    for next_cell in neighbors(grid, current, connectivity):
+      new_cost=cost_so_far[current]+cost(grid, current, next_cell)
+
+      if next_cell not in cost_so_far or new_cost< cost_so_far[next_cell]:
+        cost_so_far[next_cell]=new_cost
+        came_from[next_cell]=current
+        heapq.heappush(frontier,(new_cost,next_cell))
+  return None
+
+  
