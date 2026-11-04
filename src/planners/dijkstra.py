@@ -30,15 +30,6 @@ def reconstruct_path(came_from, goal):
   return path
 
 def dijkstra(grid, start, goal, connectivity=4):
-    """Find a lowest-cost path from start to goal.
-
-    Return a list of cells, or None if unreachable.
-
-    TODO (Week 4):
-      - frontier = heapq of (cost_so_far, cell)
-      - cost_so_far dict, came_from dict
-      - relax neighbors: if new cost is cheaper, update and push
-    """
   frontier=[]
   heapq.heappush(frontier,(0,start))
   came_from={start: None}
@@ -59,4 +50,3 @@ def dijkstra(grid, start, goal, connectivity=4):
         heapq.heappush(frontier,(new_cost,next_cell))
   return None
 
-  
