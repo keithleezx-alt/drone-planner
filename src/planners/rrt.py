@@ -200,7 +200,7 @@ def show_grid(grid: np.ndarray, path1=None, path2=None, start=None, goal=None, t
 
 def compare_algorithms(grid):
     h, w = grid.shape
-    path_rrt = rrt(grid, (0.0, 0.0), (h-1, w-1), step=1.0, max_iters=200)
+    path_rrt = rrt(grid, (0.0, 0.0), (h-1, w-1), step=1.0, max_iters=20000)
     path_rrt_star = rrt_star(grid, (0.0, 0.0), (h-1, w-1), step=1.0, max_iters=200)
     show_grid(grid, path1=path_rrt, path2=path_rrt_star, start=(0.0,0.0), goal=(h-1, w-1))
 
@@ -226,7 +226,6 @@ def load_map(path: str) -> np.ndarray:
 
 def main():
     grid = load_map("maps/simple.txt")
-    print(grid)
     compare_algorithms(grid)
 
 if __name__ == "__main__":
