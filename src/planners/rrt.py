@@ -13,17 +13,17 @@ from __future__ import annotations
 import math
 import random
 from src.planners.bfs import reconstruct_path
-from src.grid.grid import in_bounds, is_free
+from src.grid.grid import is_free
 
 def euclidean_distance(a, b):
     return math.sqrt((a[0]-b[0])**2 + (a[1]-b[1])**2)
 
 def check_collision_free(grid, start, end):
     deltaX, deltaY = end[0] - start[0], end[1] - start[1]
-    progress = 0.0
-    while progress <= 1:
+    progress = 0.05
+    while progress < 1:
         pointX, pointY = start[0] + deltaX * progress, start[1] + deltaY * progress
-        if not is_free(grid, (math.floor(pointX), math.floor(pointY))):
+        if not is_free(grid, (round(pointX), round(pointY))):
             return 0
         progress += 0.05
     return 1
@@ -77,8 +77,6 @@ def rrt(grid, start, goal, step=1.0, max_iters=5000, goal_bias=0.05):
         deltaX = deltaX / nearest_distance * step
         deltaY = deltaY / nearest_distance * step
         steered_point = (nearest_point[0] + deltaX, nearest_point[1] + deltaY)
-        if not in_bounds(grid, steered_point):
-            continue
 
         # check if collision free
         # check all cells within bounding box, to see if they lie on path
@@ -129,8 +127,6 @@ def rrt_star(grid, start, goal, goal_bias=0.05, step=1.0, max_iters=5000, radius
         deltaX = deltaX / nearest_distance * step
         deltaY = deltaY / nearest_distance * step
         steered_point = (nearest_point[0] + deltaX, nearest_point[1] + deltaY)
-        if not in_bounds(grid, steered_point):
-            continue
 
         best_distance = math.inf
         best_parent = None
@@ -204,9 +200,9 @@ def show_grid(grid: np.ndarray, path1=None, path2=None, start=None, goal=None, t
 
 def compare_algorithms(grid):
     h, w = grid.shape
-    path_rrt = rrt(grid, (0.0, 0.0), (h, w), step=1.0, max_iters=20000)
-    path_rrt_star = rrt_star(grid, (0.0, 0.0), (h, w), step=1.0, max_iters=200)
-    show_grid(grid, path1=path_rrt, path2=path_rrt_star, start=(0.0,0.0), goal=(h, w))
+    path_rrt = rrt(grid, (0.0, 0.0), (h-1, w-1), step=1.0, max_iters=200)
+    path_rrt_star = rrt_star(grid, (0.0, 0.0), (h-1, w-1), step=1.0, max_iters=200)
+    show_grid(grid, path1=path_rrt, path2=path_rrt_star, start=(0.0,0.0), goal=(h-1, w-1))
 
 def load_map(path: str) -> np.ndarray:
     """Load a map from a plain-text file of 0s and 1s (space or no space).
@@ -230,6 +226,7 @@ def load_map(path: str) -> np.ndarray:
 
 def main():
     grid = load_map("maps/simple.txt")
+    print(grid)
     compare_algorithms(grid)
 
 if __name__ == "__main__":
